@@ -1,0 +1,38 @@
+{
+    "name": "aerdigital/glsordertracker",
+    "description": "GLS Order Tracker module for PrestaShop",
+    "authors": [
+        {
+            "name": "AerDigital",
+            "email": "it@aer-wsale.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5"
+    },
+    "require-dev": {
+        "prestashop/php-dev-tools": "^5.0"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "platform": {
+            "php": "7.2.5"
+        },
+        "platform-check": false,
+        "classmap-authoritative": true,
+        "prepend-autoloader": false,
+        "optimize-autoloader": true
+    },
+    "type": "prestashop-module",
+    "autoload": {
+        "classmap": [
+            "glsordertracker.php",
+            "controllers"
+        ],
+        "psr-4": {
+            "AerDigital\\GlsOrderTracker\\": "src/"
+        }
+    },
+    "author": "AerDigital",
+    "license": "AFL-3.0"
+}

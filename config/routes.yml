@@ -1,0 +1,5 @@
+admin_ajax:
+    path: glsordertracker/ajax
+    methods: [GET, POST]
+    defaults:
+        _controller: 'AerDigital\GlsOrderTracker\Controller\AdminAjaxController::ajaxAction'

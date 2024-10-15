@@ -1,0 +1,29 @@
+# parameters:
+  # imgDirectory: 'img/'
+
+services:
+  _defaults:
+    public: true
+
+  aerdigital.glsordertracker:
+    class: GlsOrderTracker
+    factory: [Module, getInstanceByName]
+    arguments:
+      - 'glsordertracker'
+
+  aerdigital.glsordertracker.repository.order_repository:
+    class: AerDigital\GlsOrderTracker\Repository\OrderRepository
+
+  aerdigital.glsordertracker.repository.gls_order_tracker_repository:
+    class: AerDigital\GlsOrderTracker\Repository\GlsOrderTrackerRepository
+    factory: ['@doctrine.orm.default_entity_manager', getRepository]
+    arguments:
+      - AerDigital\GlsOrderTracker\Entity\GlsOrderTracker
+
+  aerdigital.glsordertracker.presenter.order_tracker_presenter:
+    class: AerDigital\GlsOrderTracker\Presenter\OrderTrackerPresenter
+    #arguments:
+      #- '@=service("aerdigital.glsordertracker").getPathUri() ~ parameter("imgDirectory")'
+
+  aerdigital.glsordertracker.service.gls_api_service:
+    class: AerDigital\GlsOrderTracker\Service\GLSApiService
