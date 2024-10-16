@@ -27,4 +27,5 @@ services:
     command: sleep infinity
 
     # PrestaShop Flashlight user is www-data, but you can change it to root if you need to
+    # Use root for devcontainer features like installing extensions, etc.
     user: root
