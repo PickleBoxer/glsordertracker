@@ -79,8 +79,8 @@ class GlsOrderTrackerCronModuleFrontController extends ModuleFrontController
             $trackingInfo = $glsApiService->trackAndTrace($shippingNumber);
 
             // Extract the last entry from tracking_data
-            $lastTrackingData = end($trackingInfo['tracking_data']);
-            $log->info('Order ID: ' . $order->id . ' - Last tracking data:', $lastTrackingData);
+            $lastTrackingData = is_array($trackingInfo['tracking_data']) ? end($trackingInfo['tracking_data']) : null;
+            $log->info('Order ID: ' . $order->id . ' - Last tracking data:', $lastTrackingData ?: ['message' => 'No tracking data available']);
 
             $isUpdated = false;
             $previousState = $order->getCurrentState();
@@ -99,7 +99,7 @@ class GlsOrderTrackerCronModuleFrontController extends ModuleFrontController
                 $isUpdated = true;
             }
 
-            // Update order status and ordertracket state if delivered
+            // Update order status and order tracker state if delivered
             if ($lastTrackingData['status'] === 'delivered') {
                 $idOrderStateDelivered = (int) Configuration::get('PS_OS_DELIVERED');
                 $order->setCurrentState($idOrderStateDelivered);
