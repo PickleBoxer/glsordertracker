@@ -28,7 +28,7 @@ class GlsOrderTrackerAjaxModuleFrontController extends ModuleFrontController
 
     public function displayAjax()
     {
-        $this->ajax = 1;
+        $this->ajax = true;
         $action = Tools::getValue('action');
         $response = [];
 

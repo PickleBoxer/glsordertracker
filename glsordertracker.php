@@ -277,7 +277,7 @@ class GlsOrderTracker extends Module
      */
     private function render(string $template, array $params = []): string
     {
-        /** @var Twig_Environment $twig */
+        /** @var \Twig\Environment $twig */
         $twig = $this->get('twig');
 
         return $twig->render($template, $params);

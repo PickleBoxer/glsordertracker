@@ -43,7 +43,7 @@ class GlsOrderTrackerRepository extends EntityRepository
     /**
      * Get all orders
      *
-     * @return OrderTracker[]
+     * @return GlsOrderTracker[]
      */
     public function findAllOrders(): array
     {
@@ -53,7 +53,7 @@ class GlsOrderTrackerRepository extends EntityRepository
     /**
      * Save the order tracker
      *
-     * @param OrderTracker $orderTracker
+     * @param GlsOrderTracker $orderTracker
      */
     public function save($orderTracker)
     {
