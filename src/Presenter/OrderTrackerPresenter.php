@@ -30,9 +30,9 @@ use Order;
 
 class OrderTrackerPresenter
 {
-    /**
-     * @var string
-     */
+    // /**
+    //  * @var string
+    //  */
     //private $imgDir;
 
     //public function __construct(string $imgDir)

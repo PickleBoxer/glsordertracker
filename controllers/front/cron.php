@@ -39,7 +39,7 @@ class GlsOrderTrackerCronModuleFrontController extends ModuleFrontController
         $logFilePath = __DIR__ . '/../../log/log_' . date('d-M-Y') . '.log';
         $log->pushHandler(new StreamHandler($logFilePath, Logger::DEBUG));
 
-        $this->ajax = 1;
+        $this->ajax = true;
 
         if (!Tools::isPHPCLI()) {
             $this->ajaxRender('Forbidden call.');
@@ -101,7 +101,8 @@ class GlsOrderTrackerCronModuleFrontController extends ModuleFrontController
 
             // Update order status and ordertracket state if delivered
             if ($lastTrackingData['status'] === 'delivered') {
-                $order->setCurrentState(Configuration::get('PS_OS_DELIVERED'));
+                $idOrderStateDelivered = (int) Configuration::get('PS_OS_DELIVERED');
+                $order->setCurrentState($idOrderStateDelivered);
                 $orderTracker->setState($order->getCurrentState());
                 $isUpdated = true;
             }
@@ -129,5 +130,7 @@ class GlsOrderTrackerCronModuleFrontController extends ModuleFrontController
 
         // Render all orders as pretty-printed JSON
         $this->ajaxRender(json_encode($result, JSON_PRETTY_PRINT));
+
+        return true;
     }
 }

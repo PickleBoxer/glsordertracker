@@ -35,46 +35,62 @@ use Doctrine\ORM\Mapping as ORM;
 class GlsOrderTracker
 {
     /**
+     * @var int|null
+     *
      * @ORM\Id
      * @ORM\Column(name="id_tracker", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private int $trackerId;
+    private $trackerId;
 
     /**
+     * @var int
+     *
      * @ORM\Column(name="id_order", type="integer", unique=true)
      */
-    private int $orderId;
+    private $orderId;
 
     /**
+     * @var int
+     *
      * @ORM\Column(name="state", type="integer")
      */
-    private int $state;
+    private $state;
 
     /**
+     * @var string|null
+     *
      * @ORM\Column(name="tracking_status", type="string", length=64, nullable=true)
      */
-    private ?string $tracking_status;
+    private $tracking_status;
 
     /**
+     * @var string|null
+     *
      * @ORM\Column(name="status_description", type="text", nullable=true)
      */
-    private ?string $status_description;
+    private $status_description;
 
     /**
+     * @var string|null
+     *
      * @ORM\Column(name="city", type="string", length=128, nullable=true)
      */
-    private ?string $city;
+    private $city;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="datetime_creation", type="datetime", options={"default": "CURRENT_TIMESTAMP"})
      */
-    private \DateTime $datetime_creation;
+    private $datetime_creation;
 
     /**
+     * @var \DateTime
+     *
      * @ORM\Column(name="datetime_tracking", type="datetime", options={"default": "CURRENT_TIMESTAMP", "onUpdate": "CURRENT_TIMESTAMP"})
      */
-    private \DateTime $datetime_tracking;
+    private $datetime_tracking;
 
     // Getters and Setters
 
